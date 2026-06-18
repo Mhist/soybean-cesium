@@ -1,0 +1,12 @@
+packages:
+  - "packages/*"
+allowBuilds:
+  "@parcel/watcher": true
+  core-js: true
+  core-js-pure: true
+  es5-ext: true
+  esbuild: true
+  simple-git-hooks: true
+  typeit: true
+  unrs-resolver: true
+  vue-demi: true
