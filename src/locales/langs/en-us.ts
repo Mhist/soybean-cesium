@@ -2,7 +2,8 @@ const local: App.I18n.Schema = {
   system: {
     title: "SoybeanAdmin",
     updateTitle: "System Version Update Notification",
-    updateContent: "A new version of the system has been detected. Do you want to refresh the page immediately?",
+    updateContent:
+      "A new version of the system has been detected. Do you want to refresh the page immediately?",
     updateConfirm: "Refresh immediately",
     updateCancel: "Later",
   },
@@ -72,7 +73,8 @@ const local: App.I18n.Schema = {
       horizontal: "Horizontal Menu Mode",
       "vertical-mix": "Vertical Mix Menu Mode",
       "horizontal-mix": "Horizontal Mix menu Mode",
-      reverseHorizontalMix: "Reverse first level menus and child level menus position",
+      reverseHorizontalMix:
+        "Reverse first level menus and child level menus position",
     },
     recommendColor: "Apply Recommended Color Algorithm",
     recommendColorDesc: "The recommended color algorithm refers to",
@@ -150,7 +152,8 @@ const local: App.I18n.Schema = {
     pageFunTitle: "Page Function",
     configOperation: {
       copyConfig: "Copy Config",
-      copySuccessMsg: 'Copy Success, Please replace the variable "themeSettings" in "src/theme/settings.ts"',
+      copySuccessMsg:
+        'Copy Success, Please replace the variable "themeSettings" in "src/theme/settings.ts"',
       resetConfig: "Reset Config",
       resetSuccessMsg: "Reset Success",
     },
@@ -300,7 +303,8 @@ const local: App.I18n.Schema = {
     home: {
       branchDesc:
         "For the convenience of everyone in developing and updating the merge, we have streamlined the code of the main branch, only retaining the homepage menu, and the rest of the content has been moved to the example branch for maintenance. The preview address displays the content of the example branch.",
-      greeting: "Good morning, {userName}, today is another day full of vitality!",
+      greeting:
+        "Good morning, {userName}, today is another day full of vitality!",
       weatherDesc: "Today is cloudy to clear, 20℃ - 25℃!",
       projectCount: "Project Count",
       todo: "Todo",
@@ -318,11 +322,16 @@ const local: App.I18n.Schema = {
       projectNews: {
         title: "Project News",
         moreNews: "More News",
-        desc1: "Soybean created the open source project soybean-admin on May 28, 2021!",
-        desc2: "Yanbowe submitted a bug to soybean-admin, the multi-tab bar will not adapt.",
-        desc3: "Soybean is ready to do sufficient preparation for the release of soybean-admin!",
-        desc4: "Soybean is busy writing project documentation for soybean-admin!",
-        desc5: "Soybean just wrote some of the workbench pages casually, and it was enough to see!",
+        desc1:
+          "Soybean created the open source project soybean-admin on May 28, 2021!",
+        desc2:
+          "Yanbowe submitted a bug to soybean-admin, the multi-tab bar will not adapt.",
+        desc3:
+          "Soybean is ready to do sufficient preparation for the release of soybean-admin!",
+        desc4:
+          "Soybean is busy writing project documentation for soybean-admin!",
+        desc5:
+          "Soybean just wrote some of the workbench pages casually, and it was enough to see!",
       },
       creativity: "Creativity",
     },
@@ -369,7 +378,8 @@ const local: App.I18n.Schema = {
       scenes: {
         captchaSend: "Captcha Send",
         autoRequest: "Auto Request",
-        visibilityRequestTips: "Automatically request when switching browser window",
+        visibilityRequestTips:
+          "Automatically request when switching browser window",
         pollingRequestTips: "It will request every 3 seconds",
         networkRequestTips: "Automatically request after network reconnecting",
         refreshTime: "Refresh Time",
