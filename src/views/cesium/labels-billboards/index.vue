@@ -1,9 +1,19 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
 import * as Cesium from "cesium";
-
+import gzTowerImg from "@/assets/imgs/gzTower.png";
+import { Viewer } from "cesium";
 const containerRef = ref<HTMLDivElement>();
 let viewer: Cesium.Viewer | null = null;
+
+const addOsmData = async (viewer: Viewer) => {
+  // 添加3d数据/：cesium开源数据
+  // 异步加载 OSM 建筑数据
+  const osmBuildingsTileset = await Cesium.createOsmBuildingsAsync();
+
+  // 将建筑瓦片集添加到场景图元集合中
+  viewer.scene.primitives.add(osmBuildingsTileset);
+};
 
 onMounted(() => {
   if (!containerRef.value) return;
@@ -13,67 +23,137 @@ onMounted(() => {
     timeline: false,
   });
 
-  viewer.camera.flyTo({
-    destination: Cesium.Cartesian3.fromDegrees(116.397, 40, 2000000),
-    duration: 0,
-  });
+  // 飞入上海陆家嘴
+  // viewer.camera.flyTo({
+  //   destination: Cesium.Cartesian3.fromDegrees(121.5, 31.24, 3000),
+  //   orientation: {
+  //     heading: Cesium.Math.toRadians(20),
+  //     pitch: Cesium.Math.toRadians(-40),
+  //   },
+  //   duration: 1,
+  // });
 
-  // === 标签 Label ===
-  viewer.entities.add({
-    position: Cesium.Cartesian3.fromDegrees(116.397, 39.909),
-    label: {
-      text: "北京",
-      font: "bold 24px sans-serif",
-      fillColor: Cesium.Color.WHITE,
-      outlineColor: Cesium.Color.fromCssColorString("#165DFF"),
-      outlineWidth: 3,
-      style: Cesium.LabelStyle.FILL_AND_OUTLINE,
-      scale: 1.0,
-      translucencyByDistance: new Cesium.NearFarScalar(1e6, 1, 5e6, 0.2),
-    },
-  });
+  // === 添加 3D 建筑物 ===
 
+  // 上海中心大厦 (632m)
   viewer.entities.add({
-    position: Cesium.Cartesian3.fromDegrees(121.473, 31.23),
-    label: {
-      text: "上海",
-      font: "bold 20px sans-serif",
-      fillColor: Cesium.Color.fromCssColorString("#FF7D00"),
+    name: "上海中心大厦",
+    position: Cesium.Cartesian3.fromDegrees(121.5055, 31.2355),
+    box: {
+      dimensions: new Cesium.Cartesian3(85, 85, 632),
+      material: Cesium.Color.fromCssColorString("#4A90E2").withAlpha(0.85),
+      outline: true,
       outlineColor: Cesium.Color.WHITE,
+    },
+    label: {
+      text: "上海中心\n632m",
+      font: "12px sans-serif",
+      fillColor: Cesium.Color.WHITE,
+      outlineColor: Cesium.Color.BLACK,
       outlineWidth: 2,
       style: Cesium.LabelStyle.FILL_AND_OUTLINE,
+      pixelOffset: new Cesium.Cartesian2(0, -320),
     },
   });
 
-  // === 广告牌 Billboard ===
+  // 上海环球金融中心 (492m)
   viewer.entities.add({
-    position: Cesium.Cartesian3.fromDegrees(116.397, 39.909, 100000),
-    billboard: {
-      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23165DFF' stroke='%23fff' stroke-width='2'/%3E%3Ctext x='16' y='21' text-anchor='middle' fill='white' font-size='16'%3E📍%3C/text%3E%3C/svg%3E",
-      scale: 1.5,
-      verticalOrigin: Cesium.VerticalOrigin.BOTTOM,
+    position: Cesium.Cartesian3.fromDegrees(121.5068, 31.2367),
+    box: {
+      dimensions: new Cesium.Cartesian3(75, 75, 492),
+      material: Cesium.Color.fromCssColorString("#7B9FCC").withAlpha(0.8),
+      outline: true,
+      outlineColor: Cesium.Color.WHITE,
     },
   });
 
-  // 上海广告牌（闪烁效果）
-  const shanghaiBillboard = viewer.entities.add({
-    position: Cesium.Cartesian3.fromDegrees(121.473, 31.23, 80000),
-    billboard: {
-      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Crect x='2' y='2' width='44' height='44' rx='8' fill='%23FF7D00' stroke='%23fff' stroke-width='2'/%3E%3Ctext x='24' y='30' text-anchor='middle' fill='white' font-size='18' font-weight='bold'%3E沪%3C/text%3E%3C/svg%3E",
-      scale: 2.0,
-      verticalOrigin: Cesium.VerticalOrigin.BOTTOM,
-      scaleByDistance: new Cesium.NearFarScalar(1e5, 2, 1e7, 0.1),
+  // 金茂大厦 (420m)
+  viewer.entities.add({
+    position: Cesium.Cartesian3.fromDegrees(121.5073, 31.2373),
+    box: {
+      dimensions: new Cesium.Cartesian3(60, 60, 420),
+      material: Cesium.Color.fromCssColorString("#C4A46C").withAlpha(0.85),
+      outline: true,
+      outlineColor: Cesium.Color.WHITE,
     },
   });
 
-  // 闪烁动画
-  let scaleUp = true;
-  setInterval(() => {
-    if (!shanghaiBillboard.billboard) return;
-    const s = (shanghaiBillboard.billboard.scale as number) || 2;
-    shanghaiBillboard.billboard.scale = scaleUp ? s + 0.3 : s - 0.3;
-    scaleUp = !scaleUp;
-  }, 800);
+  // 东方明珠 (468m) - 用多个圆柱体模拟
+  const base = Cesium.Cartesian3.fromDegrees(121.4995, 31.2397);
+  viewer.entities.add({
+    position: base,
+    cylinder: {
+      length: 468,
+      topRadius: 20,
+      bottomRadius: 30,
+      material: Cesium.Color.fromCssColorString("#E85D75").withAlpha(0.9),
+    },
+    label: {
+      text: "东方明珠",
+      font: "12px sans-serif",
+      fillColor: Cesium.Color.WHITE,
+      outlineColor: Cesium.Color.BLACK,
+      outlineWidth: 2,
+      style: Cesium.LabelStyle.FILL_AND_OUTLINE,
+      pixelOffset: new Cesium.Cartesian2(0, -240),
+    },
+  });
+
+  // 小球（上部）
+  viewer.entities.add({
+    position: Cesium.Cartesian3.fromDegrees(121.4995, 31.2397, 350),
+    ellipsoid: {
+      radii: new Cesium.Cartesian3(25, 25, 25),
+      material: Cesium.Color.fromCssColorString("#FF6B81").withAlpha(0.95),
+    },
+  });
+
+  // 广州塔的位置
+  const guangzhouTowerPosition = Cesium.Cartesian3.fromDegrees(
+    113.3191,
+    23.109,
+    600,
+  );
+
+  addOsmData(viewer);
+  const pointEntity = viewer.entities.add({
+    id: "guangzhou_tower_point", // 可选：实体的唯一标识
+    name: "广州塔", // 可选：实体的名称
+    position: Cesium.Cartesian3.fromDegrees(113.3191, 23.109, 600), // 位置（经度、纬度、高度）
+    point: {
+      pixelSize: 15, // 点的大小（像素）
+      color: Cesium.Color.RED, // 点的颜色
+      outlineColor: Cesium.Color.WHITE, // 边框颜色
+      outlineWidth: 2, // 边框宽度
+    },
+    description: "广州塔（小蛮腰）", // 可选：点击实体时弹出的描述信息
+    label: {
+      text: "广州塔",
+      font: "12px sans-serif",
+      fillColor: Cesium.Color.WHITE,
+      outlineColor: Cesium.Color.BLACK,
+      outlineWidth: 2,
+      style: Cesium.LabelStyle.FILL_AND_OUTLINE,
+      pixelOffset: new Cesium.Cartesian2(0, -120),
+      horizontalOrigin: Cesium.HorizontalOrigin.CENTER,
+      verticalOrigin: Cesium.VerticalOrigin.TOP,
+    },
+    billboard: {
+      image: gzTowerImg,
+      width: 50,
+      height: 50,
+      horizontalOrigin: Cesium.HorizontalOrigin.CENTER,
+      verticalOrigin: Cesium.VerticalOrigin.TOP,
+    },
+  });
+  viewer.camera.flyTo({
+    destination: guangzhouTowerPosition,
+    orientation: {
+      heading: Cesium.Math.toRadians(0),
+      pitch: Cesium.Math.toRadians(-45),
+      roll: 0,
+    },
+  });
 });
 
 onUnmounted(() => viewer?.destroy());
@@ -86,5 +166,7 @@ onUnmounted(() => viewer?.destroy());
 </template>
 
 <style scoped>
-:deep(.cesium-viewer-bottom){display:none!important}
+:deep(.cesium-viewer-bottom) {
+  display: none !important;
+}
 </style>

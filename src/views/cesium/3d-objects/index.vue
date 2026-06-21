@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
 import * as Cesium from "cesium";
+import gzTowerImg from "@/assets/imgs/gzTower.png";
 
 const containerRef = ref<HTMLDivElement>();
 let viewer: Cesium.Viewer | null = null;
@@ -109,19 +110,12 @@ onMounted(() => {
 
   // 广州塔的位置
   const guangzhouTowerPosition = Cesium.Cartesian3.fromDegrees(
-    113.29,
+    113.3191,
     23.109,
-    2000,
+    20,
   );
-  // viewer.camera.flyTo({
-  //   destination: guangzhouTowerPosition,
-  //   orientation: {
-  //     heading: Cesium.Math.toRadians(0),
-  //     pitch: Cesium.Math.toRadians(-45),
-  //     roll: 0,
-  //   },
-  // });
 
+  addOsmData(viewer);
   const pointEntity = viewer.entities.add({
     id: "guangzhou_tower_point", // 可选：实体的唯一标识
     name: "广州塔", // 可选：实体的名称
@@ -133,8 +127,33 @@ onMounted(() => {
       outlineWidth: 2, // 边框宽度
     },
     description: "广州塔（小蛮腰）", // 可选：点击实体时弹出的描述信息
+    label: {
+      text: "广州塔",
+      font: "12px sans-serif",
+      fillColor: Cesium.Color.WHITE,
+      outlineColor: Cesium.Color.BLACK,
+      outlineWidth: 2,
+      style: Cesium.LabelStyle.FILL_AND_OUTLINE,
+      pixelOffset: new Cesium.Cartesian2(0, -240),
+      horizontalOrigin: Cesium.HorizontalOrigin.CENTER,
+      verticalOrigin: Cesium.VerticalOrigin.CENTER,
+    },
+    billboard: {
+      image: gzTowerImg,
+      width: 50,
+      height: 50,
+      horizontalOrigin: Cesium.HorizontalOrigin.CENTER,
+      verticalOrigin: Cesium.VerticalOrigin.TOP,
+    },
   });
-  addOsmData(viewer);
+  viewer.camera.flyTo({
+    destination: guangzhouTowerPosition,
+    orientation: {
+      heading: Cesium.Math.toRadians(0),
+      pitch: Cesium.Math.toRadians(-45),
+      roll: 0,
+    },
+  });
 });
 
 onUnmounted(() => viewer?.destroy());
