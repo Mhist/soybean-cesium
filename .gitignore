@@ -39,3 +39,7 @@ package-lock.json
 yarn.lock
 
 .VSCodeCounter
+
+# Terrain data files
+public/guangzhou/
+public/wuhan2/
