@@ -22,7 +22,9 @@ const themeStore = useThemeStore();
 const routeStore = useRouteStore();
 const tabStore = useTabStore();
 
-const transitionName = computed(() => (themeStore.page.animate ? themeStore.page.animateMode : ""));
+const transitionName = computed(() =>
+  themeStore.page.animate ? themeStore.page.animateMode : "",
+);
 
 function resetScroll() {
   const el = document.querySelector(`#${LAYOUT_SCROLL_EL_ID}`);
@@ -40,13 +42,16 @@ function resetScroll() {
       @after-leave="resetScroll"
       @after-enter="appStore.setContentXScrollable(false)"
     >
-      <KeepAlive :include="routeStore.cacheRoutes" :exclude="routeStore.excludeCacheRoutes">
+      <KeepAlive
+        :include="routeStore.cacheRoutes"
+        :exclude="routeStore.excludeCacheRoutes"
+      >
         <component
           :is="Component"
           v-if="appStore.reloadFlag"
           :key="tabStore.getTabIdByRoute(route)"
           :class="{ 'p-16px': showPadding }"
-          class="flex-grow bg-layout transition-300"
+          class="grow bg-layout transition-300"
         />
       </KeepAlive>
     </Transition>

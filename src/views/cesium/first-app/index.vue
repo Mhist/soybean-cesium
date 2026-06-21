@@ -1,20 +1,42 @@
 <script setup lang="ts">
-import { useI18n } from "vue-i18n";
+import { ref, onMounted, onUnmounted } from "vue";
 import * as Cesium from "cesium";
-const { t } = useI18n();
-import { onMounted } from "vue";
+
+const containerRef = ref<HTMLDivElement>();
+let viewer: Cesium.Viewer | null = null;
 
 onMounted(() => {
-  const viewer = new Cesium.Viewer("cesiumContainer");
+  if (!containerRef.value) return;
+
+  viewer = new Cesium.Viewer(containerRef.value, {
+    animation: false,
+    timeline: false,
+  });
+
+  // 飞入北京天安门
+  viewer.camera.flyTo({
+    destination: Cesium.Cartesian3.fromDegrees(116.397, 39.909, 5000),
+    orientation: {
+      heading: Cesium.Math.toRadians(0),
+      pitch: Cesium.Math.toRadians(-45),
+    },
+    duration: 2,
+  });
+});
+
+onUnmounted(() => {
+  viewer?.destroy();
 });
 </script>
 
 <template>
-  <div class="p-4">
-    <h1 class="mb-4 text-2xl font-bold">{{ t("route.cesium_first-app") }}</h1>
-    <p class="text-gray-600">
-      从零开始创建你的第一个 Cesium 应用，了解基本项目结构和初始化流程。
-    </p>
-    <div id="cesiumContainer"></div>
+  <div class="h-full w-full">
+    <div ref="containerRef" class="h-full w-full" />
   </div>
 </template>
+
+<style scoped>
+:deep(.cesium-viewer-bottom) {
+  display: none !important;
+}
+</style>

@@ -1,9 +1,5 @@
 import * as vue from "vue";
 import * as Cesium from "cesium";
-import "cesium/Build/Cesium/Widgets/widgets.css";
-
-Cesium.Ion.defaultAccessToken = import.meta.env.VITE_CESIUM_ACCESS_TOKEN;
-
 import "./plugins/assets";
 import "./plugins/ui";
 import {
@@ -17,6 +13,9 @@ import { setupStore } from "./store";
 import { setupRouter } from "./router";
 import { setupI18n } from "./locales";
 import App from "./App.vue";
+
+import "cesium/Build/Cesium/Widgets/widgets.css";
+Cesium.Ion.defaultAccessToken = import.meta.env.VITE_CESIUM_ACCESS_TOKEN;
 
 async function setupApp() {
   setupLoading();

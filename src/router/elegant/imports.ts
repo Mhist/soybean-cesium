@@ -9,12 +9,18 @@ import type { LastLevelRouteKey, RouteLayout } from "@elegant-router/types";
 import BaseLayout from "@/layouts/base-layout/index.vue";
 import BlankLayout from "@/layouts/blank-layout/index.vue";
 
-export const layouts: Record<RouteLayout, RouteComponent | (() => Promise<RouteComponent>)> = {
+export const layouts: Record<
+  RouteLayout,
+  RouteComponent | (() => Promise<RouteComponent>)
+> = {
   base: BaseLayout,
   blank: BlankLayout,
 };
 
-export const views: Record<LastLevelRouteKey, RouteComponent | (() => Promise<RouteComponent>)> = {
+export const views: Record<
+  LastLevelRouteKey,
+  RouteComponent | (() => Promise<RouteComponent>)
+> = {
   403: () => import("@/views/_builtin/403/index.vue"),
   404: () => import("@/views/_builtin/404/index.vue"),
   500: () => import("@/views/_builtin/500/index.vue"),
@@ -24,35 +30,55 @@ export const views: Record<LastLevelRouteKey, RouteComponent | (() => Promise<Ro
   alova_request: () => import("@/views/alova/request/index.vue"),
   alova_scenes: () => import("@/views/alova/scenes/index.vue"),
   alova_user: () => import("@/views/alova/user/index.vue"),
+  "cesium_3d-models": () => import("@/views/cesium/3d-models/index.vue"),
+  "cesium_3d-objects": () => import("@/views/cesium/3d-objects/index.vue"),
+  "cesium_camera-animation": () =>
+    import("@/views/cesium/camera-animation/index.vue"),
+  "cesium_camera-position": () =>
+    import("@/views/cesium/camera-position/index.vue"),
   cesium_coordinates: () => import("@/views/cesium/coordinates/index.vue"),
   "cesium_first-app": () => import("@/views/cesium/first-app/index.vue"),
+  "cesium_geometric-shapes": () =>
+    import("@/views/cesium/geometric-shapes/index.vue"),
   cesium_intro: () => import("@/views/cesium/intro/index.vue"),
+  "cesium_labels-billboards": () =>
+    import("@/views/cesium/labels-billboards/index.vue"),
   cesium_map: () => import("@/views/cesium/map/index.vue"),
+  "cesium_polygons-volumes": () =>
+    import("@/views/cesium/polygons-volumes/index.vue"),
   cesium_setup: () => import("@/views/cesium/setup/index.vue"),
   cesium_skybox: () => import("@/views/cesium/skybox/index.vue"),
   cesium_terrain: () => import("@/views/cesium/terrain/index.vue"),
   cesium_viewer: () => import("@/views/cesium/viewer/index.vue"),
-  "function_hide-child_one": () => import("@/views/function/hide-child/one/index.vue"),
-  "function_hide-child_three": () => import("@/views/function/hide-child/three/index.vue"),
-  "function_hide-child_two": () => import("@/views/function/hide-child/two/index.vue"),
+  "function_hide-child_one": () =>
+    import("@/views/function/hide-child/one/index.vue"),
+  "function_hide-child_three": () =>
+    import("@/views/function/hide-child/three/index.vue"),
+  "function_hide-child_two": () =>
+    import("@/views/function/hide-child/two/index.vue"),
   "function_multi-tab": () => import("@/views/function/multi-tab/index.vue"),
   function_request: () => import("@/views/function/request/index.vue"),
   "function_super-page": () => import("@/views/function/super-page/index.vue"),
   function_tab: () => import("@/views/function/tab/index.vue"),
-  "function_toggle-auth": () => import("@/views/function/toggle-auth/index.vue"),
+  "function_toggle-auth": () =>
+    import("@/views/function/toggle-auth/index.vue"),
   home: () => import("@/views/home/index.vue"),
   manage_menu: () => import("@/views/manage/menu/index.vue"),
   manage_role: () => import("@/views/manage/role/index.vue"),
   "manage_user-detail": () => import("@/views/manage/user-detail/[id].vue"),
   manage_user: () => import("@/views/manage/user/index.vue"),
-  "multi-menu_first_child": () => import("@/views/multi-menu/first_child/index.vue"),
-  "multi-menu_second_child_home": () => import("@/views/multi-menu/second_child_home/index.vue"),
+  "multi-menu_first_child": () =>
+    import("@/views/multi-menu/first_child/index.vue"),
+  "multi-menu_second_child_home": () =>
+    import("@/views/multi-menu/second_child_home/index.vue"),
   plugin_barcode: () => import("@/views/plugin/barcode/index.vue"),
   plugin_charts_antv: () => import("@/views/plugin/charts/antv/index.vue"),
-  plugin_charts_echarts: () => import("@/views/plugin/charts/echarts/index.vue"),
+  plugin_charts_echarts: () =>
+    import("@/views/plugin/charts/echarts/index.vue"),
   plugin_charts_vchart: () => import("@/views/plugin/charts/vchart/index.vue"),
   plugin_copy: () => import("@/views/plugin/copy/index.vue"),
-  plugin_editor_markdown: () => import("@/views/plugin/editor/markdown/index.vue"),
+  plugin_editor_markdown: () =>
+    import("@/views/plugin/editor/markdown/index.vue"),
   plugin_editor_quill: () => import("@/views/plugin/editor/quill/index.vue"),
   plugin_excel: () => import("@/views/plugin/excel/index.vue"),
   plugin_gantt_dhtmlx: () => import("@/views/plugin/gantt/dhtmlx/index.vue"),
