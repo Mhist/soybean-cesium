@@ -5,6 +5,15 @@ import * as Cesium from "cesium";
 const containerRef = ref<HTMLDivElement>();
 let viewer: Cesium.Viewer | null = null;
 
+const addOsmData = async (viewer) => {
+  // 添加3d数据/：cesium开源数据
+  // 异步加载 OSM 建筑数据
+  const osmBuildingsTileset = await Cesium.createOsmBuildingsAsync();
+
+  // 将建筑瓦片集添加到场景图元集合中
+  viewer.scene.primitives.add(osmBuildingsTileset);
+};
+
 onMounted(() => {
   if (!containerRef.value) return;
 
@@ -99,19 +108,33 @@ onMounted(() => {
   });
 
   // 广州塔的位置
-  const guangzhouTowerPosition = Cesium.Cartesian3.fromDegress(
+  const guangzhouTowerPosition = Cesium.Cartesian3.fromDegrees(
     113.29,
     23.109,
-    600,
+    2000,
   );
-  viewer.camera.flyTo({
-    destination: guangzhouTowerPosition,
-    orientation: {
-      heading: Cesium.Math.toRadians(0),
-      pitch: Cesium.Math.toRadians(-90),
-      roll: 0,
+  // viewer.camera.flyTo({
+  //   destination: guangzhouTowerPosition,
+  //   orientation: {
+  //     heading: Cesium.Math.toRadians(0),
+  //     pitch: Cesium.Math.toRadians(-45),
+  //     roll: 0,
+  //   },
+  // });
+
+  const pointEntity = viewer.entities.add({
+    id: "guangzhou_tower_point", // 可选：实体的唯一标识
+    name: "广州塔", // 可选：实体的名称
+    position: Cesium.Cartesian3.fromDegrees(113.3191, 23.109, 20), // 位置（经度、纬度、高度）
+    point: {
+      pixelSize: 15, // 点的大小（像素）
+      color: Cesium.Color.RED, // 点的颜色
+      outlineColor: Cesium.Color.WHITE, // 边框颜色
+      outlineWidth: 2, // 边框宽度
     },
+    description: "广州塔（小蛮腰）", // 可选：点击实体时弹出的描述信息
   });
+  addOsmData(viewer);
 });
 
 onUnmounted(() => viewer?.destroy());
