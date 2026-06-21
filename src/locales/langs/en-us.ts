@@ -193,6 +193,7 @@ const local: App.I18n.Schema = {
     "cesium_3d-models": "3D Models",
     "cesium_geometric-shapes": "Ellipsoid, Corridor & Cylinder",
     "cesium_polygons-volumes": "Polygon, Polyline & Ellipsoid",
+    "cesium_primitive-imagery": "Primitive Imagery Objects",
     function: "System Function",
     alova: "Alova Example",
     alova_request: "Alova Request",

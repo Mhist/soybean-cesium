@@ -123,6 +123,7 @@ export const generatedRoutes: GeneratedRoute[] = [
         meta: {
           title: "cesium_3d-objects",
           i18nKey: "route.cesium_3d-objects",
+          order: 11,
         },
       },
       {
@@ -132,6 +133,7 @@ export const generatedRoutes: GeneratedRoute[] = [
         meta: {
           title: "cesium_camera-animation",
           i18nKey: "route.cesium_camera-animation",
+          order: 10,
         },
       },
       {
@@ -141,6 +143,7 @@ export const generatedRoutes: GeneratedRoute[] = [
         meta: {
           title: "cesium_camera-position",
           i18nKey: "route.cesium_camera-position",
+          order: 9,
         },
       },
       {
@@ -170,6 +173,7 @@ export const generatedRoutes: GeneratedRoute[] = [
         meta: {
           title: "cesium_geometric-shapes",
           i18nKey: "route.cesium_geometric-shapes",
+          order: 14,
         },
       },
       {
@@ -189,6 +193,7 @@ export const generatedRoutes: GeneratedRoute[] = [
         meta: {
           title: "cesium_labels-billboards",
           i18nKey: "route.cesium_labels-billboards",
+          order: 12,
         },
       },
       {
@@ -208,6 +213,17 @@ export const generatedRoutes: GeneratedRoute[] = [
         meta: {
           title: "cesium_polygons-volumes",
           i18nKey: "route.cesium_polygons-volumes",
+          order: 15,
+        },
+      },
+      {
+        name: "cesium_primitive-imagery",
+        path: "/cesium/primitive-imagery",
+        component: "view.cesium_primitive-imagery",
+        meta: {
+          title: "cesium_primitive-imagery",
+          i18nKey: "route.cesium_primitive-imagery",
+          order: 16,
         },
       },
       {

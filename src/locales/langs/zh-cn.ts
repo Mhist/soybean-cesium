@@ -191,6 +191,7 @@ const local: App.I18n.Schema = {
     "cesium_3d-models": "3D模型添加与设置",
     "cesium_geometric-shapes": "椭圆走廊圆柱体",
     "cesium_polygons-volumes": "多边形体积折线椭球体",
+    "cesium_primitive-imagery": "Primitive创建图像物体",
     function: "系统功能",
     alova: "alova示例",
     alova_request: "alova请求",

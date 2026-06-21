@@ -44,8 +44,10 @@ export const views: Record<
   "cesium_labels-billboards": () =>
     import("@/views/cesium/labels-billboards/index.vue"),
   cesium_map: () => import("@/views/cesium/map/index.vue"),
-  "cesium_polygons-volumes": () =>
+  "cesium_polygons-volumes":
     import("@/views/cesium/polygons-volumes/index.vue"),
+  "cesium_primitive-imagery":
+    import("@/views/cesium/primitive-imagery/index.vue"),
   cesium_setup: () => import("@/views/cesium/setup/index.vue"),
   cesium_skybox: () => import("@/views/cesium/skybox/index.vue"),
   cesium_terrain: () => import("@/views/cesium/terrain/index.vue"),
