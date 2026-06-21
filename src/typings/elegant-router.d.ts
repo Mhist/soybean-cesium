@@ -51,6 +51,7 @@ declare module "@elegant-router/types" {
     "cesium_labels-billboards": "/cesium/labels-billboards";
     "cesium_map": "/cesium/map";
     "cesium_polygons-volumes": "/cesium/polygons-volumes";
+    "cesium_primitive-imagery": "/cesium/primitive-imagery";
     "cesium_setup": "/cesium/setup";
     "cesium_skybox": "/cesium/skybox";
     "cesium_terrain": "/cesium/terrain";
@@ -201,6 +202,7 @@ declare module "@elegant-router/types" {
     | "cesium_labels-billboards"
     | "cesium_map"
     | "cesium_polygons-volumes"
+    | "cesium_primitive-imagery"
     | "cesium_setup"
     | "cesium_skybox"
     | "cesium_terrain"
