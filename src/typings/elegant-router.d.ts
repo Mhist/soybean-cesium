@@ -42,17 +42,36 @@ declare module "@elegant-router/types" {
     "cesium": "/cesium";
     "cesium_3d-models": "/cesium/3d-models";
     "cesium_3d-objects": "/cesium/3d-objects";
+    "cesium_3dtiles": "/cesium/3dtiles";
+    "cesium_3dtiles-advanced": "/cesium/3dtiles-advanced";
+    "cesium_3dtiles-style": "/cesium/3dtiles-style";
+    "cesium_appearance-material": "/cesium/appearance-material";
+    "cesium_appearance-shader": "/cesium/appearance-shader";
     "cesium_camera-animation": "/cesium/camera-animation";
     "cesium_camera-position": "/cesium/camera-position";
     "cesium_coordinates": "/cesium/coordinates";
+    "cesium_custom-material": "/cesium/custom-material";
+    "cesium_czml": "/cesium/czml";
+    "cesium_czml-dynamic": "/cesium/czml-dynamic";
+    "cesium_entity-interaction": "/cesium/entity-interaction";
+    "cesium_entity-material": "/cesium/entity-material";
+    "cesium_fabric-shader": "/cesium/fabric-shader";
     "cesium_first-app": "/cesium/first-app";
+    "cesium_flight-tracking": "/cesium/flight-tracking";
+    "cesium_geojson": "/cesium/geojson";
+    "cesium_geojson-style": "/cesium/geojson-style";
     "cesium_geometric-shapes": "/cesium/geometric-shapes";
     "cesium_intro": "/cesium/intro";
+    "cesium_kml": "/cesium/kml";
     "cesium_labels-billboards": "/cesium/labels-billboards";
     "cesium_map": "/cesium/map";
     "cesium_polygons-volumes": "/cesium/polygons-volumes";
+    "cesium_polyline-material": "/cesium/polyline-material";
+    "cesium_primitive-entities": "/cesium/primitive-entities";
     "cesium_primitive-imagery": "/cesium/primitive-imagery";
+    "cesium_primitive-material": "/cesium/primitive-material";
     "cesium_setup": "/cesium/setup";
+    "cesium_shader-builtins": "/cesium/shader-builtins";
     "cesium_skybox": "/cesium/skybox";
     "cesium_terrain": "/cesium/terrain";
     "cesium_viewer": "/cesium/viewer";
@@ -193,17 +212,36 @@ declare module "@elegant-router/types" {
     | "alova_user"
     | "cesium_3d-models"
     | "cesium_3d-objects"
+    | "cesium_3dtiles-advanced"
+    | "cesium_3dtiles-style"
+    | "cesium_3dtiles"
+    | "cesium_appearance-material"
+    | "cesium_appearance-shader"
     | "cesium_camera-animation"
     | "cesium_camera-position"
     | "cesium_coordinates"
+    | "cesium_custom-material"
+    | "cesium_czml-dynamic"
+    | "cesium_czml"
+    | "cesium_entity-interaction"
+    | "cesium_entity-material"
+    | "cesium_fabric-shader"
     | "cesium_first-app"
+    | "cesium_flight-tracking"
+    | "cesium_geojson-style"
+    | "cesium_geojson"
     | "cesium_geometric-shapes"
     | "cesium_intro"
+    | "cesium_kml"
     | "cesium_labels-billboards"
     | "cesium_map"
     | "cesium_polygons-volumes"
+    | "cesium_polyline-material"
+    | "cesium_primitive-entities"
     | "cesium_primitive-imagery"
+    | "cesium_primitive-material"
     | "cesium_setup"
+    | "cesium_shader-builtins"
     | "cesium_skybox"
     | "cesium_terrain"
     | "cesium_viewer"

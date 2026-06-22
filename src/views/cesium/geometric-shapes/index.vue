@@ -15,7 +15,10 @@ onMounted(() => {
 
   viewer.camera.flyTo({
     destination: Cesium.Cartesian3.fromDegrees(114.17, 22.3, 8000),
-    orientation: { heading: Cesium.Math.toRadians(45), pitch: Cesium.Math.toRadians(-50) },
+    orientation: {
+      heading: Cesium.Math.toRadians(45),
+      pitch: Cesium.Math.toRadians(-50),
+    },
     duration: 1,
   });
 
@@ -28,8 +31,12 @@ onMounted(() => {
       outline: true,
       outlineColor: Cesium.Color.fromCssColorString("#165DFF"),
     },
-    label: { text: "椭球体", font: "12px sans-serif", verticalOrigin: Cesium.VerticalOrigin.BOTTOM,
-      pixelOffset: new Cesium.Cartesian2(0, -160) },
+    label: {
+      text: "椭球体",
+      font: "12px sans-serif",
+      verticalOrigin: Cesium.VerticalOrigin.BOTTOM,
+      pixelOffset: new Cesium.Cartesian2(0, -160),
+    },
   });
 
   // === 走廊 Corridor (香港到澳门示意) ===
@@ -45,8 +52,8 @@ onMounted(() => {
       outlineWidth: 3,
     },
     label: {
-      text: "走廊 Corridor", font: "14px sans-serif",
-      position: Cesium.Cartesian3.fromDegrees(114.25, 22.26, 500),
+      text: "走廊 Corridor",
+      font: "14px sans-serif",
     },
   });
 
@@ -61,8 +68,12 @@ onMounted(() => {
       outline: true,
       outlineColor: Cesium.Color.fromCssColorString("#FF7D00"),
     },
-    label: { text: "圆柱体", font: "12px sans-serif", verticalOrigin: Cesium.VerticalOrigin.BOTTOM,
-      pixelOffset: new Cesium.Cartesian2(0, -260) },
+    label: {
+      text: "圆柱体",
+      font: "12px sans-serif",
+      verticalOrigin: Cesium.VerticalOrigin.BOTTOM,
+      pixelOffset: new Cesium.Cartesian2(0, -260),
+    },
   });
 
   // === 更多圆柱体 ===
@@ -92,5 +103,7 @@ onUnmounted(() => viewer?.destroy());
 </template>
 
 <style scoped>
-:deep(.cesium-viewer-bottom){display:none!important}
+:deep(.cesium-viewer-bottom) {
+  display: none !important;
+}
 </style>
