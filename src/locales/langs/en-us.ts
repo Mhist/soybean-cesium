@@ -206,7 +206,7 @@ const local: App.I18n.Schema = {
     "cesium_custom-material": "Custom MaterialProperty Material",
     cesium_geojson: "Load & Render GeoJSON",
     "cesium_geojson-style": "Custom GeoJSON Styling",
-    cesium_kml: "KML Global Research Institutes",
+    cesium_kml: "Load KML Data",
     cesium_czml: "Introduction to CZML",
     "cesium_czml-dynamic": "CZML Time-Dynamic Scenes",
     "cesium_flight-tracking": "Transoceanic Flight Tracking",

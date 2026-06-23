@@ -204,7 +204,7 @@ const local: App.I18n.Schema = {
     "cesium_custom-material": "编写自定义MaterialProperty材质",
     cesium_geojson: "加载渲染GEOJSON数据",
     "cesium_geojson-style": "自定义GEOJSON生成物体的样式",
-    cesium_kml: "kmI数据生成全球科学研究所地理标记",
+    cesium_kml: "加载KML数据",
     cesium_czml: "初识CZML数据与应用",
     "cesium_czml-dynamic": "CZML时间动态图形场景",
     "cesium_flight-tracking": "追踪航班跨洋飞行",

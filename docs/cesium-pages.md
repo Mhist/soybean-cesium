@@ -30,7 +30,7 @@
 | 26 | `custom-material` | 编写自定义 MaterialProperty 材质 |
 | 27 | `geojson` | 加载渲染 GEOJSON 数据 |
 | 28 | `geojson-style` | 自定义 GEOJSON 生成物体的样式 |
-| 29 | `kml` | KML 数据生成全球科学研究所地理标记 |
+| 29 | `kml` | 加载 KML 数据 |
 | 30 | `czml` | 初识 CZML 数据与应用 |
 | 31 | `czml-dynamic` | CZML 时间动态图形场景 |
 | 32 | `flight-tracking` | 追踪航班跨洋飞行 |
